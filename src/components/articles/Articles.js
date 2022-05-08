@@ -20,6 +20,11 @@ const Articles = () => {
     getspecificArticles(e.value)
   }
 
+  // Συναρτηση που θα εμφανιζει μονο ενα μερος του content
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + '...' : string
+  }
+
   useEffect(() => {
     getCategories()
     getspecificArticles()
@@ -28,7 +33,9 @@ const Articles = () => {
   // Συναρτηση που θα επιστρεφει τις κατηγοριες
   const getCategories = async () => {
     setIsLoading(true)
-    const response = await axios.get('https://dataverse-backend-ui7oe775ka-ew.a.run.app/categories')
+    const response = await axios.get(
+      'https://dataverse-backend-ui7oe775ka-ew.a.run.app/categories',
+    )
     if (response.status === 200) {
       setCategories(response.data)
       setIsLoading(false)
@@ -108,8 +115,10 @@ const Articles = () => {
                       {article.title}
                     </h3>
                   </a>
-                  <p className="article-text">{article.content}</p>
-                  <p className="article-desc">{article.description}</p>
+                  <p className="article-text">
+                    {truncate(article?.content, 150)}
+                  </p>
+                  <p className="article-desc">{truncate(article?.description, 100)}</p>
                   <p className="article-category">
                     Category: {article.category.name}
                   </p>
