@@ -48,7 +48,7 @@ const Articles = () => {
   // Συναρτηση που θα επιστρεφει τις κατηγοριες
   const getCategories = async () => {
     setIsLoading(true)
-    const response = await axios.get('http://localhost:5000/categories')
+    const response = await axios.get('https://dataverse-server-ui7oe775ka-ew.a.run.app/categories')
     if (response.status === 200) {
       setCategories(response.data)
       setIsLoading(false)
@@ -65,14 +65,14 @@ const Articles = () => {
     if (category == undefined || category == null) {
       if (content == true) {
         response = await axios.post(
-          'http://localhost:5000/articles/specificArticles',
+          'https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/specificArticles',
           {
             category: '',
           },
         )
       } else {
         response = await axios.post(
-          'http://localhost:5000/articles/noContentSpecificArticles',
+          'https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/noContentSpecificArticles',
           {
             category: '',
           },
@@ -86,14 +86,14 @@ const Articles = () => {
     } else {
       if (content == true) {
         response = await axios.post(
-          'http://localhost:5000/articles/specificArticles',
+          'https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/specificArticles',
           {
             category: category.name,
           },
         )
       } else {
         response = await axios.post(
-          'http://localhost:5000/articles/noContentSpecificArticles',
+          'https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/noContentSpecificArticles',
           {
             category: category.name,
           },
@@ -112,7 +112,7 @@ const Articles = () => {
 
   // const getArticles = async () => {
   //   setIsLoading(true)
-  //   const response = await axios.get('http://localhost:5000/articles')
+  //   const response = await axios.get('https://dataverse-server-ui7oe775ka-ew.a.run.app/articles')
   //   if (response.status === 200) {
   //     setArticles(response.data)
   //     setIsLoading(false)

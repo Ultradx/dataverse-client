@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './header.css'
 import './style.css'
-import './sideNav.css'
 import Logo from '../../assets/logo-xl.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'

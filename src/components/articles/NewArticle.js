@@ -31,7 +31,7 @@ const NewArticle = () => {
 
   const getCategories = async () => {
     const response = await axios.get(
-      'http://localhost:5000/categories',
+      'https://dataverse-server-ui7oe775ka-ew.a.run.app/categories',
     )
     if (response.status === 200) {
       setCategories(response.data)
@@ -46,7 +46,7 @@ const NewArticle = () => {
     e.preventDefault()
     if (title != '' && content != '' && category.name != null) {
       const response = await axios.post(
-        'http://localhost:5000/articles/newArticle',
+        'https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/newArticle',
         {
           title: title,
           content: content,

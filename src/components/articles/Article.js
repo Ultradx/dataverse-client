@@ -29,7 +29,7 @@ const Article = () => {
 
   // // Συναρτηση που μας επιτρεπει να κανουμε get request στον server
   // const getArticle = async () => {
-  //   const response = await axios.get(`http://localhost:5000/articles/${id}`)
+  //   const response = await axios.get(`https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/${id}`)
   //   if (response.status === 200) {
   //     setTitle(response.data.title)
   //     setContent(response.data.content)
@@ -43,14 +43,14 @@ const Article = () => {
     let response
     if (withContent == true) {
       response = await axios.post(
-        `http://localhost:5000/articles/article/${id}`,
+        `https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/article/${id}`,
         {
           withContent: withContent,
         },
       )
     } else {
       response = await axios.post(
-        `http://localhost:5000/articles/article/${id}`,
+        `https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/article/${id}`,
         {
           withContent: withContent,
         },
@@ -68,7 +68,7 @@ const Article = () => {
   const deleteArticle = async (e) => {
     e.preventDefault()
     const response = await axios.delete(
-      `http://localhost:5000/articles/deleteArticle/${id}`,
+      `https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/deleteArticle/${id}`,
     )
     if (response.status === 200) {
       toast.current.show({
@@ -101,7 +101,7 @@ const Article = () => {
     e.preventDefault()
     if (title != '' && content != '') {
       const response = await axios.post(
-        'http://localhost:5000/articles/editArticle',
+        'https://dataverse-server-ui7oe775ka-ew.a.run.app/articles/editArticle',
         {
           id: id,
           content: content,

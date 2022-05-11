@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   const getCategories = async () => {
     setIsLoading(true)
-    const response = await axios.get('http://localhost:5000/categories')
+    const response = await axios.get('https://dataverse-server-ui7oe775ka-ew.a.run.app/categories')
     if (response.status === 200) {
       setCategories(response.data)
       setIsLoading(false)
@@ -42,7 +42,7 @@ const Sidebar = () => {
     e.preventDefault()
     if (inputValue != '') {
       const response = await axios.post(
-        `http://localhost:5000/categories/${inputValue}`,
+        `https://dataverse-server-ui7oe775ka-ew.a.run.app/categories/${inputValue}`,
       )
       if (response.status === 200) {
         getCategories()
@@ -73,7 +73,7 @@ const Sidebar = () => {
     e.preventDefault()
     if (inputValue != '') {
       console.log(inputValue)
-      const response = await axios.delete('http://localhost:5000/categories', {
+      const response = await axios.delete('https://dataverse-server-ui7oe775ka-ew.a.run.app/categories', {
         data: {
           name: inputValue,
         },
