@@ -1,11 +1,11 @@
 .newArticle {
-    background-color: aquamarine;
+    background-color: rgba(127, 255, 212, 0.027);
     width: 100%;
-    height: 90vh;
+    height: 45rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .newArticle-container {
@@ -14,27 +14,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     height: 100%;
     border: 1px solid black;
-    padding: 1rem;
     margin: 10rem;
     border-radius: 3rem;
 }
 
 .title {
     width: 80%;
+    margin-bottom: 2rem;
 
 }
 
 .content {
     width: 80%;
-
+    margin-bottom: 2rem;
 
 }
 
 .description {
     width: 80%;
+    margin-bottom: 2rem;
     border-radius: 1rem;
 }
 
@@ -53,6 +54,15 @@
     margin-left: 1rem;
 }
 
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filters h1 {
+    margin-right: 2rem;
+}
 
 input,
 textarea {
@@ -69,17 +79,46 @@ textarea {
 /* ========================= MEDIA QUERIES (MEDIUM DEVICES) =============== */
 
 @media screen and (max-width: 1024px) {
-    .container.contact__container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .newArticle-container {
+        /* background-color: red; */
+        margin: 0;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
     }
+
+    .newArticle-buttons {
+        width: 100%;
+
+    }
+
+    .newArticle-buttons span {
+        /* background-color: rebeccapurple; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        
+    }
+   
+
 
 }
 
 /* ========================= MEDIA QUERIES (SMALL DEVICES) =============== */
 
-@media screen and (max-width: 600px) {
-    .container.contact__container {
-        width: var(--container-width-sm);
+@media screen and (max-width: 680px) {
+    .filters h1 {
+        margin-right: 0;
     }
+
+    .filters-content-load  {
+        margin-bottom: 4rem;
+    }
+
+    .newArticle-buttons span {
+        /* background-color: rebeccapurple; */
+        width: 100%;
+        
+    }
+
 }

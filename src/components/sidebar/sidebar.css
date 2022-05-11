@@ -1,11 +1,9 @@
 .sidebar {
     /* background-color: rebeccapurple; */
-    width: 30vh;
     margin-left: 1rem;
     margin-top: 1rem;
     border-radius: 1rem;
     padding: 1rem;
-    height: 44vh;
 }
 
 .sidebar-fields {
@@ -29,3 +27,54 @@
 
 }
 
+
+
+/* ========================= MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        /* background-color: rebeccapurple; */
+        padding: 0.5rem;
+    }
+
+    .sidebar-buttons {
+        width: 100%;
+        flex-direction: column;
+        /* background-color: rebeccapurple; */
+    }
+
+    .sidebar-buttons Button {
+        margin-left: 0rem;
+        margin-right: 0rem;
+        margin-top: 0.5rem;
+        width: 100%;
+
+    }
+
+
+
+}
+
+/* ========================= MEDIA QUERIES (SMALL DEVICES) =============== */
+
+@media screen and (max-width: 680px) {
+    .sidebar {
+        /* background-color: rebeccapurple; */
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        display: none;
+    }
+
+    .sidebar-show {
+        display: block;
+        width: 8rem;
+        
+    }
+    
+    .sidebar-block {
+        display: none;
+    }
+
+}

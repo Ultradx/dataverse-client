@@ -8,6 +8,7 @@ import axios from 'axios'
 import { Toast } from 'primereact/toast'
 import { useNavigate } from 'react-router-dom'
 
+
 const NewArticle = () => {
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState(null)
@@ -22,6 +23,7 @@ const NewArticle = () => {
     setCategory(e.value)
   }
 
+
   useEffect(() => {
     getCategories()
   }, [])
@@ -29,7 +31,7 @@ const NewArticle = () => {
 
   const getCategories = async () => {
     const response = await axios.get(
-      'https://dataverse-backend-ui7oe775ka-ew.a.run.app/categories',
+      'http://localhost:5000/categories',
     )
     if (response.status === 200) {
       setCategories(response.data)
@@ -44,7 +46,7 @@ const NewArticle = () => {
     e.preventDefault()
     if (title != '' && content != '' && category.name != null) {
       const response = await axios.post(
-        'https://dataverse-backend-ui7oe775ka-ew.a.run.app/articles/newArticle',
+        'http://localhost:5000/articles/newArticle',
         {
           title: title,
           content: content,
@@ -82,6 +84,7 @@ const NewArticle = () => {
       <div className="newArticle-container">
         <Toast ref={toast} position="top-center" />
         <h1>New Article</h1>
+
         <div className="title">
           <span className="p-float-label">
             <InputText

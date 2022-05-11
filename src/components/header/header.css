@@ -1,4 +1,5 @@
 .header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,15 +7,15 @@
     height: 6rem;
     border-bottom: 1px solid rgb(224, 208, 208);
     box-shadow: 6px 6px 5px hsla(0, 0%, 0%, 0.02),
-    25px 25px 20px hsla(0, 0%, 0%, 0.03),
-    100px 100px 80px hsla(0, 0%, 0%, 0.05);
+        25px 25px 20px hsla(0, 0%, 0%, 0.03),
+        100px 100px 80px hsla(0, 0%, 0%, 0.05);
 }
 
 .header-left {
     display: flex;
     /* background-color: red; */
     margin-left: 1rem;
-    width: 30%;
+    width: 60%;
     justify-content: space-between;
     align-items: center;
     height: 100%;
@@ -35,7 +36,11 @@
 
 }
 
-.header-right {
+.header-center {
+    width: 10%;
+}
+
+.header-right, .header-right-show {
     height: 100%;
     display: flex;
     list-style: none;
@@ -43,23 +48,111 @@
     width: 30%;
     justify-content: center;
     align-items: center;
+
+}
+
+.header-right li, .header-right-show li {
+    width: 5rem;
+    color: white;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.header-right li {
-    color: white;
-    text-align: center;
-    padding: 2vh;
-    text-decoration: none;
-}
-
-.header-right li:hover {
+.header-right li:hover, .header-right-show li:hover {
     color: rgb(14, 2, 2);
     box-shadow: 6px 6px 5px hsla(0, 0%, 0%, 0.02),
-    25px 25px 20px hsla(0, 0%, 0%, 0.03),
-    100px 100px 80px hsla(0, 0%, 0%, 0.05);
+        25px 25px 20px hsla(0, 0%, 0%, 0.03),
+        100px 100px 80px hsla(0, 0%, 0%, 0.05);
 }
 
-.header-right li {
-    /* margin-right: 1rem; */
+.button-shower {
+    display: none;
+    /* background-color: rebeccapurple;     */
+    height: 3rem;
+    width: 3rem;
+}
+
+.search-box-block {
+    display: none;
+}
+
+.button-shower i {}
+
+/* ========================= MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+@media screen and (max-width: 1024px) {
+
+    .header-left {
+        /* background-color: red; */
+        margin-left: 0;
+    }
+
+    .header-left a img {
+        padding-top: 0;
+    }
+
+    .header-right {
+        padding: 1rem;
+    }
+
+    .header-right li {
+        width: 100%;
+        padding: 0;
+    }
+
+
+
+}
+
+/* ========================= MEDIA QUERIES (SMALL DEVICES) =============== */
+
+@media screen and (max-width: 680px) {
+
+    .header {
+        justify-content: center;
+    }
+
+    .header-left {
+        justify-content: center;
+
+    }
+
+    .header-center {
+        display: none;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .button-shower {
+        margin-left: 3rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(211, 205, 205, 0.342);
+        border: 1px solid black;
+
+    }
+
+    .button-shower:hover {
+        background-color: rgba(211, 205, 205, 0.651);
+
+    }
+
+    .header-right-show {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        height: 6rem;
+        width: 66%;
+        -webkit-transition:1s;
+    }
+
+
+
 }

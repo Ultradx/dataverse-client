@@ -1,11 +1,11 @@
 .newArticle {
-    background-color: aquamarine;
+    background-color: rgba(127, 255, 212, 0.027);
     width: 100%;
-    height: 90vh;
+    height: 45rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .newArticle-container {
@@ -14,27 +14,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     height: 100%;
     border: 1px solid black;
-    padding: 1rem;
     margin: 10rem;
     border-radius: 3rem;
 }
 
 .title {
     width: 80%;
+    margin-bottom: 2rem;
 
 }
 
 .content {
     width: 80%;
-
+    margin-bottom: 2rem;
 
 }
 
 .description {
     width: 80%;
+    margin-bottom: 2rem;
     border-radius: 1rem;
 }
 
@@ -42,6 +43,7 @@
     width: 80%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .newArticle-buttons {
@@ -69,6 +71,33 @@ textarea {
 /* ========================= MEDIA QUERIES (MEDIUM DEVICES) =============== */
 
 @media screen and (max-width: 1024px) {
+    .newArticle-container {
+        /* background-color: red; */
+        margin: 0;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+
+    .category {
+        width: 100%;
+        /* background-color: aqua; */
+        flex-direction: column;
+        align-items: center;
+    }
+    .newArticle-buttons {
+        width: 100%;
+        /* background-color: rebeccapurple; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .newArticle-buttons button {
+        width: 25%;
+        margin-top: 0.8rem;
+        margin-left: 0rem !important; 
+    }
+
 
 
 }
@@ -76,5 +105,8 @@ textarea {
 /* ========================= MEDIA QUERIES (SMALL DEVICES) =============== */
 
 @media screen and (max-width: 600px) {
+    .newArticle-buttons button {
+        width: 30%;
+    }
 
 }

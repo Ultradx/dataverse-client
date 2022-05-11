@@ -14,6 +14,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/article/:id"  element={<Article  />} />
           <Route exact path="/createArticle" element={<NewArticle  />} />
+          {/* <Route exact path="/createArticle" element={<DeleteArticle  />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

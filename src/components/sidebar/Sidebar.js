@@ -6,11 +6,14 @@ import axios from 'axios'
 import { InputText } from 'primereact/inputtext'
 import { ScrollPanel } from 'primereact/scrollpanel'
 import { Toast } from 'primereact/toast'
+import {selectShow} from '../../redux/showCategory'
+import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
   const [categories, setCategories] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [inputValue, setInputValue] = useState('')
+  const showValue = useSelector(selectShow)
   const toast = useRef(null)
 
   const [selectedCategories, setSelectedCategories] = useState(
@@ -19,11 +22,14 @@ const Sidebar = () => {
 
   useEffect(() => {
     getCategories()
-  }, [])
+    console.log(showValue);
+  }, [showValue])
+
+  
 
   const getCategories = async () => {
     setIsLoading(true)
-    const response = await axios.get('https://dataverse-backend-ui7oe775ka-ew.a.run.app/categories')
+    const response = await axios.get('http://localhost:5000/categories')
     if (response.status === 200) {
       setCategories(response.data)
       setIsLoading(false)
@@ -35,9 +41,9 @@ const Sidebar = () => {
   const addNewCategory = async (e) => {
     e.preventDefault()
     if (inputValue != '') {
-      const response = await axios.post('https://dataverse-backend-ui7oe775ka-ew.a.run.app/categories', {
-        name: inputValue,
-      })
+      const response = await axios.post(
+        `http://localhost:5000/categories/${inputValue}`,
+      )
       if (response.status === 200) {
         getCategories()
         setInputValue('')
@@ -67,7 +73,7 @@ const Sidebar = () => {
     e.preventDefault()
     if (inputValue != '') {
       console.log(inputValue)
-      const response = await axios.delete('https://dataverse-backend-ui7oe775ka-ew.a.run.app/categories', {
+      const response = await axios.delete('http://localhost:5000/categories', {
         data: {
           name: inputValue,
         },
@@ -96,28 +102,8 @@ const Sidebar = () => {
     }
   }
 
-  // Προσθηκη στον πινακα τις κατηγοριες που εχουμε κανει check
-  const onCategoryChange = (e) => {
-    let _selectedCategories = [...selectedCategories]
-
-    if (e.checked) {
-      _selectedCategories.push(e.value)
-    } else {
-      for (let i = 0; i < _selectedCategories.length; i++) {
-        const selectedCategory = _selectedCategories[i]
-
-        if (selectedCategory.key === e.value.key) {
-          _selectedCategories.splice(i, 1)
-          break
-        }
-      }
-    }
-
-    setSelectedCategories(_selectedCategories)
-  }
-
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${showValue.show == true ? "sidebar-show" : 'sidebar-block'}`}>
       <div className="sidebar-card">
         <h5>Category</h5>
         <ScrollPanel
@@ -127,26 +113,24 @@ const Sidebar = () => {
           {!isLoading ? (
             categories.map((category) => (
               <div key={category._id} className="field-checkbox">
-                <Checkbox
-                  inputId={category._id}
-                  name="category"
-                  value={category}
-                  onChange={onCategoryChange}
-                  checked={selectedCategories.some(
-                    (item) => item._id === category._id,
-                  )}
-                />
                 <label htmlFor={category._id}>{category.name}</label>
+                <label
+                  style={{ color: 'red', fontSize: '0.6rem' }}
+                  htmlFor={category._id}
+                >
+                  {category._id}
+                </label>
               </div>
             ))
           ) : (
-            <h3>Loading</h3>
+            <h3>Loading..</h3>
           )}
         </ScrollPanel>
       </div>
 
       <div className="sidebar-fields">
         <InputText
+          placeholder="Add/Delete Category.."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
